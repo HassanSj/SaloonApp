@@ -408,7 +408,7 @@ function SetupRewardPoint() {
                         onChange={(e) => setEarning(e.target.value)}
                         style={styles.form}
                       />
-                      <label style={styles.label}>Earning (1 AED = RP)</label>
+                      <label style={styles.label}>Spending (1 RP = AED)</label>
                       <input
                         type="text"
                         class="form  mb-4"
