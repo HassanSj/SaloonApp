@@ -5,11 +5,10 @@ import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
 import "../assets/css/textanimate.css";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
-function Upload() {
+function ClinicsManagement() {
   const images = importAll(
     require.context("../assets/img/", false, /\.(png|jpe?g|svg)$/)
   );
-
   function importAll(r) {
     let images = {};
     r.keys().map((item, index) => {
@@ -18,53 +17,11 @@ function Upload() {
     return images;
   }
   const [getuserdata, setUserdata] = useState([]);
-  console.log(getuserdata);
-
-  // const { udata, setUdata } = useContext(adddata);
-
-  // const {updata, setUPdata} = useContext(updatedata);
-
-  // const {dltdata, setDLTdata} = useContext(deldata);
 
   const Navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
-  const [course, setCourse] = useState("");
-  const [university, setUniversity] = useState("");
-  const [instructor, setInstructor] = useState("");
-  const [cellno, setCellno] = useState("");
-  const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
-  async function addRecord(event) {
-    event.preventDefault();
-
-    const response = await fetch("http://localhost:1337/api/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        city,
-        course,
-        university,
-        instructor,
-        cellno,
-        image,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (data.status === "ok") {
-      window.location.href = "/add";
-    }
-  }
 
   const getdata = async () => {
-    const res = await fetch("http://localhost:1337/add/getdata", {
+    const res = await fetch("http://localhost:1337/clinics/getdata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -85,37 +42,6 @@ function Upload() {
   useEffect(() => {
     getdata();
   }, []);
-
-  const imagehandler = () => {
-    const data = new FormData();
-    data.append("upload_preset", "mern-crud");
-    data.append("file", image);
-
-    data.append("cloud_name", "dx6ro5dgg");
-
-    //   const config = {
-    //     method: "POST",
-    //     body: data
-    // };
-    //   var imgurl = "https://api.cloudinary.com/v1_1/dx6ro5dgg/image/upload";
-
-    //   fetch(imgurl, config)
-    //    .then(responseData => {
-    //              console.log(JSON.stringify(responseData, null, 4));
-    //    })
-
-    fetch("https://api.cloudinary.com/v1_1/dx6ro5dgg/image/upload", {
-      method: "post",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUrl(data.url);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   function redirect() {
     Navigate("/");
@@ -172,14 +98,101 @@ function Upload() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to="/Add">Users</NavLink>
+                <NavLink to="/businesstype">Business Type</NavLink>
               </a>
             </li>
-
+            <li className="nav-item">
+              <a className="nav-link">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-credit-card grid-58 text-success text-sm opacity-10" />
+                </div>
+                <NavLink to="/managecategory">Manage Category </NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link ">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-app grid-58 text-info text-sm opacity-10" />
+                </div>
+                <NavLink to="/setuppackage">Setup Package</NavLink>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-world-2 grid-58 text-success text-sm opacity-10" />
+                </div>
+                <NavLink to="/teamsize">Setup Team Size</NavLink>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link ">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-credit-card grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to="/setuppayment">Setup Payment Method</NavLink>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link ">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-app grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to="/reward">Setup Reward Point</NavLink>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link ">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-world-2 grid-58 text-success text-sm opacity-10" />
+                </div>
+                <NavLink to="/bookingmanagement">Booking Management </NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to="/customers">Customer Management </NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link active">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-world-2 grid-58 text-success text-sm opacity-10" />
+                </div>
+                <NavLink to="/clinics">Clinics Management </NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link ">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to="/saloons">Saloons Management </NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link ">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-credit-card grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to="/transactions">Transactions</NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link ">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to=""> Transfers</NavLink>
+              </a>
+            </li>
             <li className="nav-item mt-3">
               <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">
                 Account pages
@@ -231,19 +244,6 @@ function Upload() {
         >
           <div className="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-              <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                <li className="breadcrumb-item text-sm">
-                  <a className="opacity-5 text-white" href="javascript:;">
-                    Pages
-                  </a>
-                </li>
-                <li
-                  className="breadcrumb-item text-sm text-white active"
-                  aria-current="page"
-                >
-                  Users
-                </li>
-              </ol>
               <h6 className="font-weight-bolder text-white mb-0">Users</h6>
             </nav>
             <div
@@ -295,7 +295,7 @@ function Upload() {
               <div className="col-auto">
                 <div className="avatar avatar-xl position-relative">
                   <img
-                    src={images["team-2.jpg"]}
+                    src={images["db.jpg"]}
                     alt="profile_image"
                     className="w-100 border-radius-lg shadow-sm"
                   />
@@ -303,8 +303,7 @@ function Upload() {
               </div>
               <div className="col-auto my-auto">
                 <div className="h-100">
-                  <h5 className="mb-1">Add Record Here</h5>
-                  <p className="mb-0 font-weight-bold text-sm">student</p>
+                  <h5 className="mb-1">Clinics Lists</h5>
                 </div>
               </div>
             </div>
@@ -313,22 +312,28 @@ function Upload() {
         <div className="container-fluid py-4">
           <div className="row">
             <div className="col-md-8">
-              <div className="card">
+              <div
+                className="card"
+                style={{
+                  width: "112%",
+                  marginLeft: "132px",
+                  fontSize: "larger",
+                }}
+              >
                 <div className="card-header pb-0">
                   <div className="d-flex align-items-center">
                     <table class="table">
                       <thead>
                         <tr className="table-dark">
-                          <th scope="col">id</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">City</th>
-                          <th scope="col">Course</th>
-                          <th scope="col">University</th>
-                          <th scope="col">Instructor</th>
-                          <th scope="col">Cell</th>
-                          <th scope="col">Image</th>
-                          <th scope="col">Actions</th>
+                          <th>Id</th>
+                          <th>Image</th>
+                          <th>Name</th>
+                          <th>Business Type</th>
+                          <th>Contact</th>
+                          <th>Email</th>
+                          <th>Feature</th>
+                          <th>Status</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -336,16 +341,27 @@ function Upload() {
                           return (
                             <>
                               <tr>
-                                <th scope="row">{id + 1}</th>
-                                <td>{element.name}</td>
+                                <th>{element.id}</th>
+                                <td>
+                                  {" "}
+                                  <div className="avatar avatar-xl position-relative">
+                                    <img
+                                      src={element.profile_image}
+                                      alt="profile_image"
+                                      className="w-100 border-radius-lg shadow-sm"
+                                    />
+                                  </div>
+                                </td>
+                                <td>
+                                  {element.first_name + element.last_name}
+                                </td>
+                                <td>{element.business_name}</td>
+                                <td>{element.contact_no}</td>
                                 <td>{element.email}</td>
-                                <td>{element.city}</td>
-                                <td>{element.course}</td>
-                                <td>{element.university}</td>
-                                <td>{element.instructor}</td>
-                                <td>{element.cellno}</td>
-                                <td>{element.image}</td>
+                                <td>{element.feature}</td>
+                                <td>{element.status}</td>
                                 <td class="align-middle  text-sm">
+                                  {/* <img src={element.image}/> */}
                                   <button
                                     style={{
                                       padding: "0",
@@ -382,23 +398,6 @@ function Upload() {
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="card card-profile">
-                <h1>Add Record</h1>
-
-                <div className="box p-3 mb-3 mt-5">
-                  <div class="form-group">
-                    <input
-                      type="file"
-                      onChange={(e) => setImage(e.target.files[0])}
-                    />
-                  </div>
-                  <button type="submit" onClick={() => imagehandler()}>
-                    Image upload
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
           <footer className="footer pt-3  ">
             <div className="container-fluid">
@@ -430,4 +429,5 @@ function Upload() {
     </div>
   );
 }
-export default Upload;
+
+export default ClinicsManagement;
