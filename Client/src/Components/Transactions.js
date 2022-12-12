@@ -134,7 +134,7 @@ function Transactions() {
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-credit-card grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to="">Setup Payment Method</NavLink>
+                <NavLink to="/setuppayment">Setup Payment Method</NavLink>
               </a>
             </li>
             <li className="nav-item">
@@ -142,7 +142,7 @@ function Transactions() {
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-app grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to="">Setup Reward Point</NavLink>
+                <NavLink to="/reward">Setup Reward Point</NavLink>
               </a>
             </li>
             <li className="nav-item">
@@ -174,15 +174,7 @@ function Transactions() {
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to="/">Saloons Management </NavLink>
-              </a>
-            </li>{" "}
-            <li className="nav-item">
-              <a className="nav-link ">
-                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="ni ni-app grid-58 text-success text-sm opacity-10" />
-                </div>
-                <NavLink to="">Finance</NavLink>
+                <NavLink to="/saloons">Saloons Management </NavLink>
               </a>
             </li>{" "}
             <li className="nav-item">
@@ -340,9 +332,10 @@ function Transactions() {
                           <th>Saloon Name</th>
                           <th>Customer Name</th>
                           <th>Business Type</th>
-
                           <th>Amount</th>
+                          <th>Refund</th>
                           <th>Date</th>
+                          <th>status</th>
                         </tr>
                       </thead>
                       <tbody>

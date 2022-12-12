@@ -423,7 +423,7 @@ function SetupTeamSize() {
                         <tr className="table-dark">
                           <th>Id</th>
                           <th>Profile</th>
-                          <th>Size</th>
+                          <th>Name</th>
 
                           <th>Actions</th>
                         </tr>
@@ -446,7 +446,7 @@ function SetupTeamSize() {
                                   </div>
                                 </td>
 
-                                <td>{element.size}</td>
+                                <td>{element.name}</td>
 
                                 <td class="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
