@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
+import $ from "jquery";
 import "../assets/css/textanimate.css";
+import { Button } from "reactstrap";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
 function Transactions() {
   const images = importAll(
@@ -46,6 +48,31 @@ function Transactions() {
   function redirect() {
     Navigate("/");
   }
+  const styles = {
+    btn_group_button: {
+      color: "white",
+      padding: "10px 24px",
+      cursor: "pointer",
+      float: "left",
+      marginLeft: "452px",
+    },
+    btn_group_after: {
+      content: '""',
+      clear: "both",
+      display: "table",
+    },
+    btn_group_button_not__last_child: {
+      borderRight: "none",
+    },
+    btn_group_button_hover: {
+      backgroundColor: "#3e8e41",
+    },
+  };
+  $(".btn").on("click", function () {
+    $("#content div").fade();
+    var target = "#" + $(this).data("target");
+    $(target).show();
+  });
 
   return (
     <div>
@@ -309,10 +336,51 @@ function Transactions() {
             </div>
           </div>
         </div>
+
         <div className="container-fluid py-4">
           <div className="row">
             <div className="col-md-8">
+              <Button
+                color="primary"
+                outline
+                type="button"
+                className="btn"
+                data-target="table1"
+              >
+                Booking Transactions
+              </Button>
+
+              <Button
+                color="info"
+                outline
+                type="button"
+                className="btn"
+                data-target="table2"
+              >
+                Membership Transactions
+              </Button>
+              <Button
+                color="success"
+                outline
+                type="button"
+                className="btn"
+                data-target="table3"
+              >
+                Deposit
+              </Button>
+
+              <Button
+                color="warning"
+                outline
+                type="button"
+                className="btn"
+                data-target="table4"
+              >
+                WithDraw
+              </Button>
+
               <div
+                id="content"
                 className="card"
                 style={{
                   width: "112%",
@@ -320,9 +388,9 @@ function Transactions() {
                   fontSize: "larger",
                 }}
               >
-                <div className="card-header pb-0">
+                <div className="card-header pb-0" id="table1">
                   <div className="d-flex align-items-center">
-                    <table class="table">
+                    <table className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -362,7 +430,7 @@ function Transactions() {
                                 <td>{element.email}</td>
                                 <td>{element.feature}</td>
                                 <td>{element.status}</td>
-                                <td class="align-middle  text-sm">
+                                <td className="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button
                                     style={{
@@ -371,7 +439,7 @@ function Transactions() {
                                       background: "none",
                                     }}
                                   >
-                                    <span class="badge badge-sm bg-gradient-danger">
+                                    <span className="badge badge-sm bg-gradient-danger">
                                       Delete
                                     </span>
                                   </button>
@@ -384,7 +452,239 @@ function Transactions() {
                                         background: "none",
                                       }}
                                     >
-                                      <span class="badge badge-sm bg-gradient-success">
+                                      <span className="badge badge-sm bg-gradient-success">
+                                        Edit
+                                      </span>
+                                    </button>
+                                  </NavLink>
+                                </td>
+                              </tr>
+                            </>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div className="card-header pb-0" id="table2">
+                  <div className="d-flex align-items-center">
+                    <table className="table">
+                      <thead>
+                        <tr className="table-dark">
+                          <th>Id</th>
+                          <th>MemberShipId</th>
+                          <th>Saloon Id</th>
+                          <th>Saloon Name</th>
+                          <th>Type</th>
+                          <th>Package id</th>
+                          <th>Amount</th>
+                          <th>Refund</th>
+                          <th>Date</th>
+                          <th>status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {getuserdata.map((element, id) => {
+                          return (
+                            <>
+                              <tr>
+                                <th>{element.id}</th>
+                                <td>
+                                  {" "}
+                                  <div className="avatar avatar-xl position-relative">
+                                    <img
+                                      src={element.profile_image}
+                                      alt="profile_image"
+                                      className="w-100 border-radius-lg shadow-sm"
+                                    />
+                                  </div>
+                                </td>
+                                <td>
+                                  {element.first_name + element.last_name}
+                                </td>
+                                <td>{element.business_name}</td>
+                                <td>{element.contact_no}</td>
+                                <td>{element.email}</td>
+                                <td>{element.feature}</td>
+                                <td>{element.status}</td>
+                                <td className="align-middle  text-sm">
+                                  {/* <img src={element.image}/> */}
+                                  <button
+                                    style={{
+                                      padding: "0",
+                                      border: "none",
+                                      background: "none",
+                                    }}
+                                  >
+                                    <span className="badge badge-sm bg-gradient-danger">
+                                      Delete
+                                    </span>
+                                  </button>
+                                  <NavLink to={`edit/${element._id}`}>
+                                    {" "}
+                                    <button
+                                      style={{
+                                        padding: "0",
+                                        border: "none",
+                                        background: "none",
+                                      }}
+                                    >
+                                      <span className="badge badge-sm bg-gradient-success">
+                                        Edit
+                                      </span>
+                                    </button>
+                                  </NavLink>
+                                </td>
+                              </tr>
+                            </>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div className="card-header pb-0" id="table3">
+                  <div className="d-flex align-items-center">
+                    <table className="table">
+                      <thead>
+                        <tr className="table-dark">
+                          <th>Id</th>
+                          <th>BookingId</th>
+                          <th>Customer Id</th>
+                          <th>Saloon Name</th>
+                          <th>Saloon Id</th>
+                          <th>Customer Name</th>
+                          <th>Business Type</th>
+                          <th>Wallet Id</th>
+                          <th>Amount</th>
+                          <th>Refund</th>
+                          <th>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {getuserdata.map((element, id) => {
+                          return (
+                            <>
+                              <tr>
+                                <th>{element.id}</th>
+                                <td>
+                                  {" "}
+                                  <div className="avatar avatar-xl position-relative">
+                                    <img
+                                      src={element.profile_image}
+                                      alt="profile_image"
+                                      className="w-100 border-radius-lg shadow-sm"
+                                    />
+                                  </div>
+                                </td>
+                                <td>
+                                  {element.first_name + element.last_name}
+                                </td>
+                                <td>{element.business_name}</td>
+                                <td>{element.contact_no}</td>
+                                <td>{element.email}</td>
+                                <td>{element.feature}</td>
+                                <td>{element.status}</td>
+                                <td className="align-middle  text-sm">
+                                  {/* <img src={element.image}/> */}
+                                  <button
+                                    style={{
+                                      padding: "0",
+                                      border: "none",
+                                      background: "none",
+                                    }}
+                                  >
+                                    <span className="badge badge-sm bg-gradient-danger">
+                                      Delete
+                                    </span>
+                                  </button>
+                                  <NavLink to={`edit/${element._id}`}>
+                                    {" "}
+                                    <button
+                                      style={{
+                                        padding: "0",
+                                        border: "none",
+                                        background: "none",
+                                      }}
+                                    >
+                                      <span className="badge badge-sm bg-gradient-success">
+                                        Edit
+                                      </span>
+                                    </button>
+                                  </NavLink>
+                                </td>
+                              </tr>
+                            </>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div className="card-header pb-0" id="table4">
+                  <div className="d-flex align-items-center">
+                    <table className="table">
+                      <thead>
+                        <tr className="table-dark">
+                          <th>Id</th>
+                          <th>Saloon Id</th>
+                          <th>Saloon Name</th>
+                          <th>Business Type</th>
+                          <th>Wallet Id</th>
+                          <th>Amount</th>
+                          <th>Refund</th>
+
+                          <th>Date</th>
+                          <th>status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {getuserdata.map((element, id) => {
+                          return (
+                            <>
+                              <tr>
+                                <th>{element.id}</th>
+                                <td>
+                                  {" "}
+                                  <div className="avatar avatar-xl position-relative">
+                                    <img
+                                      src={element.profile_image}
+                                      alt="profile_image"
+                                      className="w-100 border-radius-lg shadow-sm"
+                                    />
+                                  </div>
+                                </td>
+                                <td>
+                                  {element.first_name + element.last_name}
+                                </td>
+                                <td>{element.business_name}</td>
+                                <td>{element.contact_no}</td>
+                                <td>{element.email}</td>
+                                <td>{element.feature}</td>
+                                <td>{element.status}</td>
+                                <td className="align-middle  text-sm">
+                                  {/* <img src={element.image}/> */}
+                                  <button
+                                    style={{
+                                      padding: "0",
+                                      border: "none",
+                                      background: "none",
+                                    }}
+                                  >
+                                    <span className="badge badge-sm bg-gradient-danger">
+                                      Delete
+                                    </span>
+                                  </button>
+                                  <NavLink to={`edit/${element._id}`}>
+                                    {" "}
+                                    <button
+                                      style={{
+                                        padding: "0",
+                                        border: "none",
+                                        background: "none",
+                                      }}
+                                    >
+                                      <span className="badge badge-sm bg-gradient-success">
                                         Edit
                                       </span>
                                     </button>
