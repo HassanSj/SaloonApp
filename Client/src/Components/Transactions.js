@@ -18,12 +18,16 @@ function Transactions() {
     });
     return images;
   }
-  const [getuserdata, setUserdata] = useState([]);
+
+  const [getbooking, setBooking] = useState([]);
+  const [getmembership, setMembership] = useState([]);
+  const [getwallet, setWallet] = useState([]);
+  const [getwithdraw, setWithdraw] = useState([]);
 
   const Navigate = useNavigate();
 
-  const getdata = async () => {
-    const res = await fetch("http://localhost:1337/transactions/getdata", {
+  const booking = async () => {
+    const res = await fetch("http://localhost:1337/transactions/booking", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -36,14 +40,67 @@ function Transactions() {
     if (res.status === 422 || !data) {
       console.log("error ");
     } else {
-      setUserdata(data);
+      setBooking(data);
       console.log("get data");
     }
   };
 
-  useEffect(() => {
-    getdata();
-  }, []);
+  const membership = async () => {
+    const res = await fetch("http://localhost:1337/transactions/membership", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+      console.log("error ");
+    } else {
+      setMembership(data);
+      console.log("get data");
+    }
+  };
+
+  const wallet = async () => {
+    const res = await fetch("http://localhost:1337/transactions/wallets", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+      console.log("error ");
+    } else {
+      setWallet(data);
+      console.log("get data");
+    }
+  };
+
+  const withdraw = async () => {
+    const res = await fetch("http://localhost:1337/transactions/withdraw", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+      console.log("error ");
+    } else {
+      setWithdraw(data);
+      console.log("get data");
+    }
+  };
 
   function redirect() {
     Navigate("/");
@@ -68,11 +125,18 @@ function Transactions() {
       backgroundColor: "#3e8e41",
     },
   };
-  $(".btn").on("click", function () {
-    $("#content div").fade();
-    var target = "#" + $(this).data("target");
-    $(target).show();
+  $(function () {
+    $("#content").css("display", "none");
+    $("body").on("click", ".btn", function () {
+      $("#content div").hide();
+
+      var target = "#" + $(this).data("target");
+      $(target).show();
+    });
   });
+  useEffect(() => {
+    booking();
+  }, []);
 
   return (
     <div>
@@ -340,52 +404,54 @@ function Transactions() {
         <div className="container-fluid py-4">
           <div className="row">
             <div className="col-md-8">
-              <Button
-                color="primary"
-                outline
-                type="button"
-                className="btn"
-                data-target="table1"
-              >
-                Booking Transactions
-              </Button>
+              <div className="btn-group" style={styles.btn_group_button}>
+                <Button
+                  color="primary"
+                  outline
+                  type="button"
+                  className="btn"
+                  data-target="table1"
+                >
+                  Booking Transactions
+                </Button>
 
-              <Button
-                color="info"
-                outline
-                type="button"
-                className="btn"
-                data-target="table2"
-              >
-                Membership Transactions
-              </Button>
-              <Button
-                color="success"
-                outline
-                type="button"
-                className="btn"
-                data-target="table3"
-              >
-                Deposit
-              </Button>
+                <Button
+                  color="info"
+                  outline
+                  type="button"
+                  className="btn"
+                  data-target="table2"
+                >
+                  Membership Transactions
+                </Button>
+                <Button
+                  color="success"
+                  outline
+                  type="button"
+                  className="btn"
+                  data-target="table3"
+                >
+                  Deposit
+                </Button>
 
-              <Button
-                color="warning"
-                outline
-                type="button"
-                className="btn"
-                data-target="table4"
-              >
-                WithDraw
-              </Button>
-
+                <Button
+                  color="warning"
+                  outline
+                  type="button"
+                  className="btn"
+                  data-target="table4"
+                >
+                  WithDraw
+                </Button>
+              </div>
               <div
                 id="content"
                 className="card"
                 style={{
-                  width: "112%",
-                  marginLeft: "132px",
+                  width: "148%",
+                  marginLeft: "24px",
                   fontSize: "larger",
+                  backgroundColor: "#e3e3e3 !important",
                 }}
               >
                 <div className="card-header pb-0" id="table1">
@@ -407,29 +473,23 @@ function Transactions() {
                         </tr>
                       </thead>
                       <tbody>
-                        {getuserdata.map((element, id) => {
+                        {getbooking.map((element, id) => {
                           return (
                             <>
                               <tr>
                                 <th>{element.id}</th>
-                                <td>
-                                  {" "}
-                                  <div className="avatar avatar-xl position-relative">
-                                    <img
-                                      src={element.profile_image}
-                                      alt="profile_image"
-                                      className="w-100 border-radius-lg shadow-sm"
-                                    />
-                                  </div>
-                                </td>
-                                <td>
+                                <th>{element.id}</th>
+                                <th>{element.customer_id}</th>
+                                <th>
                                   {element.first_name + element.last_name}
-                                </td>
-                                <td>{element.business_name}</td>
-                                <td>{element.contact_no}</td>
-                                <td>{element.email}</td>
-                                <td>{element.feature}</td>
-                                <td>{element.status}</td>
+                                </th>
+                                <th>{element.saloon_id}</th>
+                                <th>{element.name}</th>
+                                <th>{element.amount}</th>
+                                <th>{element.refund}</th>
+                                <th>{element.status}</th>
+                                <th>{element.created_at}</th>
+
                                 <td className="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button
@@ -484,7 +544,7 @@ function Transactions() {
                         </tr>
                       </thead>
                       <tbody>
-                        {getuserdata.map((element, id) => {
+                        {getmembership.map((element, id) => {
                           return (
                             <>
                               <tr>
@@ -562,7 +622,7 @@ function Transactions() {
                         </tr>
                       </thead>
                       <tbody>
-                        {getuserdata.map((element, id) => {
+                        {getwallet.map((element, id) => {
                           return (
                             <>
                               <tr>
@@ -639,7 +699,7 @@ function Transactions() {
                         </tr>
                       </thead>
                       <tbody>
-                        {getuserdata.map((element, id) => {
+                        {getwithdraw.map((element, id) => {
                           return (
                             <>
                               <tr>
