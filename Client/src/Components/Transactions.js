@@ -126,7 +126,6 @@ function Transactions() {
     },
   };
   $(function () {
-    $("#content").css("display", "none");
     $("body").on("click", ".btn", function () {
       $("#content div").hide();
 
@@ -465,7 +464,7 @@ function Transactions() {
                           <th>Customer Id</th>
                           <th>Saloon Name</th>
                           <th>Customer Name</th>
-                          <th>Business Type</th>
+
                           <th>Amount</th>
                           <th>Refund</th>
                           <th>Date</th>
@@ -477,14 +476,17 @@ function Transactions() {
                           return (
                             <>
                               <tr>
+                                <th> {}</th>
+
                                 <th>{element.id}</th>
-                                <th>{element.id}</th>
+
+                                <th>{element.saloon_id}</th>
                                 <th>{element.customer_id}</th>
+                                <th>{element.sname}</th>
                                 <th>
+                                  {" "}
                                   {element.first_name + element.last_name}
                                 </th>
-                                <th>{element.saloon_id}</th>
-                                <th>{element.name}</th>
                                 <th>{element.amount}</th>
                                 <th>{element.refund}</th>
                                 <th>{element.status}</th>

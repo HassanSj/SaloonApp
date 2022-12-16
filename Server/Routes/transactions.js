@@ -7,7 +7,7 @@ const db = require("../config/db");
 
 booking.get("/transactions/booking", (req, res) => {
   db.query(
-    "SELECT s.id ,b.id , b.customer_id,c.first_name , c.last_name , b.saloon_id, s.amount,s.refund ,s.status,s.created_at, n.name FROM transactions as s , bookings as b , customers as c  , business_types as n LIMIT 20",
+    "SELECT bookings.id , bookings.saloon_id , bookings.customer_id , saloons.first_name AS sname , saloons.last_name as sname , customers.first_name , customers.last_name FROM ((bookings INNER JOIN saloons on bookings.saloon_id = saloons.id) INNER JOIN customers on bookings.customer_id = customers.id);",
     (err, result) => {
       if (err) {
         console.log(err);
