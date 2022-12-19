@@ -53,13 +53,13 @@ function Transactions() {
       },
     });
 
-    const data = await res.json();
-    console.log(data);
+    const data1 = await res.json();
+    console.log(data1);
 
-    if (res.status === 422 || !data) {
+    if (res.status === 422 || !data1) {
       console.log("error ");
     } else {
-      setMembership(data);
+      setMembership(data1);
       console.log("get data");
     }
   };
@@ -135,6 +135,7 @@ function Transactions() {
   });
   useEffect(() => {
     booking();
+    membership();
   }, []);
 
   return (
@@ -464,11 +465,11 @@ function Transactions() {
                           <th>Customer Id</th>
                           <th>Saloon Name</th>
                           <th>Customer Name</th>
-
                           <th>Amount</th>
                           <th>Refund</th>
                           <th>Date</th>
-                          <th>status</th>
+                          <th>Status</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -476,24 +477,20 @@ function Transactions() {
                           return (
                             <>
                               <tr>
-                                <th> {}</th>
-
                                 <th>{element.id}</th>
-
+                                <th>{element.bid}</th>
                                 <th>{element.saloon_id}</th>
                                 <th>{element.customer_id}</th>
                                 <th>{element.sname}</th>
                                 <th>
-                                  {" "}
                                   {element.first_name + element.last_name}
                                 </th>
                                 <th>{element.amount}</th>
                                 <th>{element.refund}</th>
-                                <th>{element.status}</th>
                                 <th>{element.created_at}</th>
+                                <th>{element.status}</th>
 
                                 <td className="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
                                   <button
                                     style={{
                                       padding: "0",
@@ -506,7 +503,6 @@ function Transactions() {
                                     </span>
                                   </button>
                                   <NavLink to={`edit/${element._id}`}>
-                                    {" "}
                                     <button
                                       style={{
                                         padding: "0",
@@ -550,25 +546,16 @@ function Transactions() {
                           return (
                             <>
                               <tr>
+                                <th></th>
                                 <th>{element.id}</th>
-                                <td>
-                                  {" "}
-                                  <div className="avatar avatar-xl position-relative">
-                                    <img
-                                      src={element.profile_image}
-                                      alt="profile_image"
-                                      className="w-100 border-radius-lg shadow-sm"
-                                    />
-                                  </div>
-                                </td>
-                                <td>
-                                  {element.first_name + element.last_name}
-                                </td>
-                                <td>{element.business_name}</td>
-                                <td>{element.contact_no}</td>
-                                <td>{element.email}</td>
-                                <td>{element.feature}</td>
-                                <td>{element.status}</td>
+                                <th>{element.saloon_id}</th>
+                                <th>{element.SaloonName}</th>
+                                <th>{element.business_type_id}</th>
+                                <th>{element.package_id}</th>
+                                <th>{element.price}</th>
+                                <th></th>
+                                <th>{element.created_at}</th>
+
                                 <td className="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button
