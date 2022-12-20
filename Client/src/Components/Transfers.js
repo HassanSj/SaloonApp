@@ -5,7 +5,7 @@ import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
 import "../assets/css/textanimate.css";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
-function SaloonsManagement() {
+function Transfers() {
   const images = importAll(
     require.context("../assets/img/", false, /\.(png|jpe?g|svg)$/)
   );
@@ -21,7 +21,7 @@ function SaloonsManagement() {
   const Navigate = useNavigate();
 
   const getdata = async () => {
-    const res = await fetch("http://localhost:1337/saloons/getdata", {
+    const res = await fetch("http://localhost:1337/transfers/getdata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -170,7 +170,7 @@ function SaloonsManagement() {
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link active">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
@@ -186,7 +186,7 @@ function SaloonsManagement() {
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link ">
+              <a className="nav-link active">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
@@ -303,7 +303,7 @@ function SaloonsManagement() {
               </div>
               <div className="col-auto my-auto">
                 <div className="h-100">
-                  <h5 className="mb-1">Saloons Lists</h5>
+                  <h5 className="mb-1">Transfers Lists</h5>
                 </div>
               </div>
             </div>
@@ -326,14 +326,14 @@ function SaloonsManagement() {
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
-                          <th>Image</th>
-                          <th>Name</th>
+                          <th>Saloon Id</th>
+                          <th>Saloon Name</th>
                           <th>Business Type</th>
-                          <th>Contact</th>
-                          <th>Email</th>
-                          <th>Feature</th>
-                          <th>Status</th>
-                          <th>Actions</th>
+                          <th>Customer Id</th>
+                          <th>Customer Name</th>
+                          <th>Amount</th>
+                          <th>Date</th>
+                          <th>View</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -342,24 +342,15 @@ function SaloonsManagement() {
                             <>
                               <tr>
                                 <th>{element.id}</th>
-                                <td>
-                                  {" "}
-                                  <div className="avatar avatar-xl position-relative">
-                                    <img
-                                      src={element.profile_image}
-                                      alt="profile_image"
-                                      className="w-100 border-radius-lg shadow-sm"
-                                    />
-                                  </div>
-                                </td>
-                                <td>
-                                  {element.first_name + element.last_name}
-                                </td>
-                                <td>{element.business_name}</td>
-                                <td>{element.contact_no}</td>
-                                <td>{element.email}</td>
-                                <td>{element.feature}</td>
-                                <td>{element.status}</td>
+                                <th>{element.saloon_id}</th>
+                                <th>{element.sname}</th>
+                                <th>{element.business_type_id}</th>
+                                <th>{element.customer_id}</th>
+                                <th>{element.cname}</th>
+                                <th>{element.amount}</th>
+
+                                <th>{element.created_at}</th>
+
                                 <td class="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button
@@ -367,26 +358,13 @@ function SaloonsManagement() {
                                       padding: "0",
                                       border: "none",
                                       background: "none",
+                                      marginLeft: "11px",
                                     }}
                                   >
-                                    <span class="badge badge-sm bg-gradient-danger">
-                                      Delete
+                                    <span class="badge badge-sm bg-gradient-info">
+                                      View
                                     </span>
                                   </button>
-                                  <NavLink to={`edit/${element._id}`}>
-                                    {" "}
-                                    <button
-                                      style={{
-                                        padding: "0",
-                                        border: "none",
-                                        background: "none",
-                                      }}
-                                    >
-                                      <span class="badge badge-sm bg-gradient-success">
-                                        Edit
-                                      </span>
-                                    </button>
-                                  </NavLink>
                                 </td>
                               </tr>
                             </>
@@ -430,4 +408,4 @@ function SaloonsManagement() {
   );
 }
 
-export default SaloonsManagement;
+export default Transfers;

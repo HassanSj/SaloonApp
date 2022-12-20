@@ -65,7 +65,7 @@ function Transactions() {
   };
 
   const wallet = async () => {
-    const res = await fetch("http://localhost:1337/transactions/wallets", {
+    const res = await fetch("http://localhost:1337/transactions/wallet", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -136,6 +136,8 @@ function Transactions() {
   useEffect(() => {
     booking();
     membership();
+    wallet();
+    withdraw();
   }, []);
 
   return (
@@ -281,7 +283,7 @@ function Transactions() {
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to=""> Transfers</NavLink>
+                <NavLink to="/transfers"> Transfers</NavLink>
               </a>
             </li>
             <li className="nav-item mt-3">
@@ -600,14 +602,17 @@ function Transactions() {
                           <th>Id</th>
                           <th>BookingId</th>
                           <th>Customer Id</th>
-                          <th>Saloon Name</th>
-                          <th>Saloon Id</th>
                           <th>Customer Name</th>
-                          <th>Business Type</th>
+
+                          <th>Saloon Id</th>
+                          <th>Saloon Name</th>
+
                           <th>Wallet Id</th>
                           <th>Amount</th>
                           <th>Refund</th>
                           <th>Date</th>
+                          <th>Status</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -616,24 +621,18 @@ function Transactions() {
                             <>
                               <tr>
                                 <th>{element.id}</th>
-                                <td>
-                                  {" "}
-                                  <div className="avatar avatar-xl position-relative">
-                                    <img
-                                      src={element.profile_image}
-                                      alt="profile_image"
-                                      className="w-100 border-radius-lg shadow-sm"
-                                    />
-                                  </div>
-                                </td>
-                                <td>
-                                  {element.first_name + element.last_name}
-                                </td>
-                                <td>{element.business_name}</td>
-                                <td>{element.contact_no}</td>
-                                <td>{element.email}</td>
-                                <td>{element.feature}</td>
-                                <td>{element.status}</td>
+                                <th>{element.bid}</th>
+
+                                <th>{element.customer_id}</th>
+                                <th>{element.cname}</th>
+                                <th>{element.saloon_id}</th>
+                                <th>{element.sname}</th>
+                                <th>{element.wallet_id}</th>
+                                <th>{element.amount}</th>
+                                <th>{element.refund}</th>
+                                <th>{element.created_at}</th>
+                                <th>{element.status}</th>
+
                                 <td className="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button
@@ -682,9 +681,9 @@ function Transactions() {
                           <th>Wallet Id</th>
                           <th>Amount</th>
                           <th>Refund</th>
-
                           <th>Date</th>
-                          <th>status</th>
+                          <th>Status</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -693,24 +692,15 @@ function Transactions() {
                             <>
                               <tr>
                                 <th>{element.id}</th>
-                                <td>
-                                  {" "}
-                                  <div className="avatar avatar-xl position-relative">
-                                    <img
-                                      src={element.profile_image}
-                                      alt="profile_image"
-                                      className="w-100 border-radius-lg shadow-sm"
-                                    />
-                                  </div>
-                                </td>
-                                <td>
-                                  {element.first_name + element.last_name}
-                                </td>
-                                <td>{element.business_name}</td>
-                                <td>{element.contact_no}</td>
-                                <td>{element.email}</td>
-                                <td>{element.feature}</td>
-                                <td>{element.status}</td>
+                                <th>{element.saloonid}</th>
+                                <th>{element.SaloonName}</th>
+                                <th>{element.business_type_id}</th>
+                                <th>{element.wallet_id}</th>
+                                <th>{element.amount}</th>
+                                <th>{element.refund}</th>
+                                <th>{element.created_at}</th>
+                                <th>{element.status}</th>
+
                                 <td className="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button

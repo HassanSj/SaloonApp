@@ -237,7 +237,7 @@ function ManageCategory() {
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to=""> Transfers</NavLink>
+                <NavLink to="/transfers"> Transfers</NavLink>
               </a>
             </li>
             <li className="nav-item mt-3">
