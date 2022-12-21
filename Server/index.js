@@ -17,13 +17,14 @@ const membership = require("./Routes/transactionsmembership");
 const wallets = require("./Routes/transactionsdeposit");
 const withdraw = require("./Routes/transactionswithdraw");
 const transfers = require("./Routes/transfers");
+const profile = require("./Routes/profile");
 const app = express();
 const PORT = 1337;
 app.use(cors());
 app.use(express.json());
 var storage = multer.diskStorage({
   destination: (req, file, callBack) => {
-    callBack(null, "./public/images");
+    callBack(null, "../Client/src/images/");
   },
   filename: (req, file, callBack) => {
     callBack(
@@ -43,7 +44,7 @@ app.post("/api/businesstype", upload.single("image"), (req, res) => {
     console.log(req.body.name);
     var name = req.body.name;
     console.log(req.file.path);
-    var imgsrc = "http://127.0.0.1:3000/images/" + req.file.path;
+    var imgsrc = "http://127.0.0.1:3000/" + req.file.path;
     console.log(imgsrc);
     var insertData = "INSERT INTO business_types(name,image)VALUES(?,?)";
 
@@ -114,6 +115,7 @@ app.use(membership);
 app.use(wallets);
 app.use(withdraw);
 app.use(transfers);
+app.use(profile);
 app.listen(PORT, () => {
   console.log("Server started on 1337");
 });

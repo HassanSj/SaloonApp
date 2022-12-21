@@ -279,7 +279,7 @@ function SetupPackage() {
               </h6>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="./pages/profile.html">
+              <a className="nav-link ">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-single-02 text-dark text-sm opacity-10" />
                 </div>
@@ -339,57 +339,56 @@ function SetupPackage() {
       </aside>
       <main className="main-content position-relative border-radius-lg ">
         {/* Navbar */}
-        <nav
-          className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl "
-          id="navbarBlur"
-          data-scroll="false"
-        >
-          <div className="container-fluid py-1 px-3">
-            <nav aria-label="breadcrumb">
-              <h6 className="font-weight-bolder text-white mb-0">Users</h6>
-            </nav>
-            <div
-              className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
-              id="navbar"
-            >
-              <div className="ms-md-auto pe-md-3 d-flex align-items-center"></div>
-              <ul className="navbar-nav  justify-content-end">
-                <li className="nav-item d-flex align-items-center">
+        <div className="container position-sticky z-index-sticky top-0">
+          <div className="row">
+            <div className="col-12">
+              <nav
+                style={{ marginTop: "-18px !important" }}
+                className="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4"
+              >
+                <div className="container-fluid">
                   <a
-                    href="javascript:;"
-                    className="nav-link text-white font-weight-bold px-0"
+                    className="navbar-brand font-weight-bolder ms-lg-0 ms-3 "
+                    href="../pages/dashboard.html"
                   >
-                    <i className="fa fa-user me-sm-1" />
-                    <button
-                      style={{
-                        color: "white",
-                        padding: "0",
-                        border: "none",
-                        background: "none",
-                      }}
-                      onClick={redirect}
-                    >
-                      <span className="d-sm-inline d-none">Log Out</span>
-                    </button>
+                    ProgramminStudio
                   </a>
-                </li>
-                <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                  <a
-                    href="javascript:;"
-                    className="nav-link text-white p-0"
-                    id="iconNavbarSidenav"
+                  <button
+                    className="navbar-toggler shadow-none ms-2"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navigation"
+                    aria-controls="navigation"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
                   >
-                    <div className="sidenav-toggler-inner">
-                      <i className="sidenav-toggler-line bg-white" />
-                      <i className="sidenav-toggler-line bg-white" />
-                      <i className="sidenav-toggler-line bg-white" />
-                    </div>
-                  </a>
-                </li>
-              </ul>
+                    <span className="navbar-toggler-icon mt-2">
+                      <span className="navbar-toggler-bar bar1" />
+                      <span className="navbar-toggler-bar bar2" />
+                      <span className="navbar-toggler-bar bar3" />
+                    </span>
+                  </button>
+                  <div className="collapse navbar-collapse" id="navigation">
+                    <ul className="navbar-nav mx-auto"></ul>
+                    <ul className="navbar-nav d-lg-block d-none">
+                      <li className="nav-item">
+                        <a
+                          style={{ color: "white" }}
+                          href="/"
+                          className="btn btn-sm mb-0 me-1 btn-primary"
+                        >
+                          LogOut
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              {/* End Navbar */}
             </div>
           </div>
-        </nav>
+        </div>
+
         {/* End Navbar */}
         <div className="card shadow-lg mx-4 card-profile-bottom">
           <div className="card-body p-3">
