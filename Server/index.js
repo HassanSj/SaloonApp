@@ -18,6 +18,7 @@ const wallets = require("./Routes/transactionsdeposit");
 const withdraw = require("./Routes/transactionswithdraw");
 const transfers = require("./Routes/transfers");
 const profile = require("./Routes/profile");
+const services = require("./Routes/services");
 const app = express();
 const PORT = 1337;
 app.use(cors());
@@ -116,6 +117,7 @@ app.use(wallets);
 app.use(withdraw);
 app.use(transfers);
 app.use(profile);
+app.use(services);
 app.listen(PORT, () => {
   console.log("Server started on 1337");
 });

@@ -19,6 +19,7 @@ import Customers from "./Components/ManageCustomers";
 import Clinics from "./Components/ClinicsManagement";
 import SaloonsManagement from "./Components/SaloonsManagement";
 import Transfers from "./Components/Transfers";
+import Services from "./Components/Saloons Services";
 const App = () => {
   return (
     <div>
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/customers" element={<Customers />} />
           <Route path="/clinics" element={<Clinics />} />
           <Route path="/saloons" element={<SaloonsManagement />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/reward" element={<RewardPoint />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/transfers" element={<Transfers />} />

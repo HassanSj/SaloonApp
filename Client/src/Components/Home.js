@@ -69,7 +69,7 @@ function Home() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link ">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-credit-card grid-58 text-success text-sm opacity-10" />
                 </div>
@@ -77,7 +77,7 @@ function Home() {
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link">
+              <a className="nav-link ">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-app grid-58 text-info text-sm opacity-10" />
                 </div>
@@ -101,7 +101,7 @@ function Home() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link">
+              <a className="nav-link ">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-app grid-58 text-warning text-sm opacity-10" />
                 </div>
@@ -117,7 +117,7 @@ function Home() {
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link ">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
@@ -125,31 +125,39 @@ function Home() {
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link ">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
+                  <i className="ni ni-world-2 grid-58 text-success text-sm opacity-10" />
                 </div>
-                <NavLink to="">Vendor Management </NavLink>
+                <NavLink to="/clinics">Clinics Management </NavLink>
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link ">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to="">Finance</NavLink>
+                <NavLink to="/saloons">Saloons Management </NavLink>
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link ">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to="">Transactions</NavLink>
+                <NavLink to="/services">Services</NavLink>
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link ">
+              <a className="nav-link">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-credit-card grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to="/transactions">Transactions</NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>

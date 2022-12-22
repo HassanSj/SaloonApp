@@ -2,7 +2,7 @@ const express = require("express");
 const categoryroute = express.Router();
 const db = require("../config/db");
 
-categoryroute.get("/managecategory/getdata", (req, res) => {
+categoryroute.get("/api/saloon/categories", (req, res) => {
   db.query("SELECT * FROM categories", (err, result) => {
     if (err) {
       console.log(err);

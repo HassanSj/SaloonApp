@@ -5,11 +5,10 @@ import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
 import "../assets/css/textanimate.css";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
-function SetupPaymenet() {
+function SaloonsServices() {
   const images = importAll(
     require.context("../assets/img/", false, /\.(png|jpe?g|svg)$/)
   );
-
   function importAll(r) {
     let images = {};
     r.keys().map((item, index) => {
@@ -18,40 +17,11 @@ function SetupPaymenet() {
     return images;
   }
   const [getuserdata, setUserdata] = useState([]);
-  console.log(getuserdata);
-  const [image, setImage] = useState("");
+
   const Navigate = useNavigate();
-  const [code, setCode] = useState("");
-  const [title, setTitle] = useState("");
-  const [descp, setDescp] = useState("");
-
-  async function addRecord(event) {
-    event.preventDefault();
-
-    alert("Image not Selected");
-
-    const response = await fetch("http://localhost:1337/api/paymentmethod", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        image,
-        code,
-        title,
-        descp,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (data.status === "ok") {
-      window.location.href = "/setuppayment";
-    }
-  }
 
   const getdata = async () => {
-    const res = await fetch("http://localhost:1337/paymentmethod/getdata", {
+    const res = await fetch("http://localhost:1337/api/saloon/services", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -160,7 +130,7 @@ function SetupPaymenet() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active">
+              <a className="nav-link ">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-credit-card grid-58 text-warning text-sm opacity-10" />
                 </div>
@@ -204,11 +174,11 @@ function SetupPaymenet() {
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
-                <NavLink to="/saloons">Saloons Management</NavLink>
+                <NavLink to="/saloons">Saloons Management </NavLink>
               </a>
             </li>{" "}
             <li className="nav-item">
-              <a className="nav-link">
+              <a className="nav-link active">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
                 </div>
@@ -268,35 +238,12 @@ function SetupPaymenet() {
               </div>
             </div>
           </div>
-          <a
-            style={{
-              btn: {
-                display: "flex",
-                flex: "1",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "50px",
-                height: "50px",
-                transition: "all 0.2s",
-                borderLeft: "solid 1px #cccccc",
-
-                "&:hover": {
-                  background: "#efefef",
-                },
-                "&:last-child": {
-                  borderRight: "solid 1px #cccccc",
-                },
-              },
-            }}
-            href="www.programinstudio.com"
-            className="btn btn-dark btn-sm w-100 mb-3"
-          >
+          <a href target="_blank" className="btn btn-dark btn-sm w-100 mb-3">
             Documentation
           </a>
         </div>
       </aside>
       <main className="main-content position-relative border-radius-lg ">
-        {/* Navbar */}
         <div className="container position-sticky z-index-sticky top-0">
           <div className="row">
             <div className="col-12">
@@ -362,7 +309,7 @@ function SetupPaymenet() {
               </div>
               <div className="col-auto my-auto">
                 <div className="h-100">
-                  <h5 className="mb-1">Payment Method</h5>
+                  <h5 className="mb-1">Services</h5>
                 </div>
               </div>
             </div>
@@ -371,17 +318,27 @@ function SetupPaymenet() {
         <div className="container-fluid py-4">
           <div className="row">
             <div className="col-md-8">
-              <div className="card" style={{ width: "109%" }}>
+              <div
+                className="card"
+                style={{
+                  width: "121%",
+                  marginLeft: "132px",
+                  fontSize: "larger",
+                }}
+              >
                 <div className="card-header pb-0">
                   <div className="d-flex align-items-center">
                     <table class="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
-                          <th>Logo</th>
-                          <th>Code</th>
-                          <th>title</th>
+                          <th>Category ID</th>
+                          <th>Name</th>
                           <th>Description</th>
+                          <th>Time</th>
+                          <th>Retail Price</th>
+                          <th>Special Price</th>
+
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -390,22 +347,15 @@ function SetupPaymenet() {
                           return (
                             <>
                               <tr>
-                                <th scope="row">{id + 1}</th>
+                                <th>{element.id}</th>
 
-                                <td>
-                                  {" "}
-                                  <div className="avatar avatar-xl position-relative">
-                                    <img
-                                      src={element.image}
-                                      alt="profile_image"
-                                      className="w-100 border-radius-lg shadow-sm"
-                                    />
-                                  </div>
-                                </td>
+                                <td>{element.saloon_id}</td>
 
-                                <td>{element.code}</td>
-                                <td>{element.title}</td>
+                                <td>{element.name}</td>
                                 <td>{element.description}</td>
+                                <td>{element.time}</td>
+                                <td>{element.retail_price}</td>
+                                <td>{element.special_price}</td>
                                 <td class="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button
@@ -415,24 +365,10 @@ function SetupPaymenet() {
                                       background: "none",
                                     }}
                                   >
-                                    <span class="badge badge-sm bg-gradient-danger">
-                                      Delete
+                                    <span class="badge badge-sm bg-gradient-info">
+                                      View
                                     </span>
                                   </button>
-                                  <NavLink to={`edit/${element._id}`}>
-                                    {" "}
-                                    <button
-                                      style={{
-                                        padding: "0",
-                                        border: "none",
-                                        background: "none",
-                                      }}
-                                    >
-                                      <span class="badge badge-sm bg-gradient-success">
-                                        Edit
-                                      </span>
-                                    </button>
-                                  </NavLink>
                                 </td>
                               </tr>
                             </>
@@ -441,65 +377,6 @@ function SetupPaymenet() {
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              style={{ width: "26%", marginLeft: "78px" }}
-              className="col-md-4"
-            >
-              <div className="card card-profile">
-                <h1 style={{ fontFamily: "revert", fontSize: "xx-large" }}>
-                  Add New Payment Method
-                </h1>
-
-                <div className="box p-3 mb-3 mt-5">
-                  <form style={{ marginTop: "-45px" }} onSubmit={addRecord}>
-                    <div class="form-group">
-                      <input
-                        name="image"
-                        filename={image}
-                        onChange={(e) => setImage(e.target.files[0])}
-                        type="file"
-                        accept="image/*"
-                      />
-                      <input
-                        type="nummber"
-                        class="form-control  mb-4"
-                        name="code"
-                        value={code}
-                        onChange={(e) => setCode(e.target.value)}
-                        placeholder="Enter Code"
-                        required
-                      />
-                      <input
-                        type="text"
-                        class="form-control  mb-4"
-                        name="name"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Enter Title"
-                        required
-                      />
-
-                      <input
-                        type="text"
-                        class="form-control  mb-4"
-                        name="name"
-                        value={descp}
-                        onChange={(e) => setDescp(e.target.value)}
-                        placeholder="Enter Description"
-                        required
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      class="btn btn-primary btn-block mt-4"
-                    >
-                      Insert Record
-                    </button>
-                  </form>
                 </div>
               </div>
             </div>
@@ -528,10 +405,9 @@ function SetupPaymenet() {
             </div>
           </footer>
         </div>
-        {/* Github buttons */}
-        {/* Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc */}
       </main>
     </div>
   );
 }
-export default SetupPaymenet;
+
+export default SaloonsServices;

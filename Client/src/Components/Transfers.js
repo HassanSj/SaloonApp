@@ -180,6 +180,14 @@ function Transfers() {
             <li className="nav-item">
               <a className="nav-link">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
+                </div>
+                <NavLink to="/services">Services</NavLink>
+              </a>
+            </li>{" "}
+            <li className="nav-item">
+              <a className="nav-link">
+                <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="ni ni-credit-card grid-58 text-warning text-sm opacity-10" />
                 </div>
                 <NavLink to="/transactions">Transactions</NavLink>
@@ -247,7 +255,7 @@ function Transfers() {
                 <div className="container-fluid">
                   <a
                     className="navbar-brand font-weight-bolder ms-lg-0 ms-3 "
-                    href="../pages/dashboard.html"
+                    href="/Dashboard"
                   >
                     ProgramminStudio
                   </a>

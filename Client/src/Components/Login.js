@@ -45,7 +45,7 @@ function Login() {
               <div className="container-fluid">
                 <a
                   className="navbar-brand font-weight-bolder ms-lg-0 ms-3 "
-                  href="../pages/dashboard.html"
+                  href="/Dashboard"
                 >
                   ProgramminStudio
                 </a>
