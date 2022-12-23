@@ -3,12 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
-
-import "jquery/dist/jquery.min.js";
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import $ from "jquery";
 import "jquery/dist/jquery.min.js";
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
