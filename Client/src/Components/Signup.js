@@ -4,6 +4,11 @@ import img from "../assets/img/signup-cover.png";
 import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from "jquery";
 function Signup() {
   const history = useNavigate();
   const Navigate = useNavigate();

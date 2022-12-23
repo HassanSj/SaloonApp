@@ -5,6 +5,12 @@ import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
 import "../assets/css/textanimate.css";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from "jquery";
+
 function SetupPaymenet() {
   const images = importAll(
     require.context("../assets/img/", false, /\.(png|jpe?g|svg)$/)

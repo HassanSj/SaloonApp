@@ -4,6 +4,11 @@ import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
 import "../assets/css/textanimate.css";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from "jquery";
 import { Navigate, useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");

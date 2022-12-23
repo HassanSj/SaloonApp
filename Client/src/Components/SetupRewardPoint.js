@@ -7,6 +7,11 @@ import "../assets/css/textanimate.css";
 import { withSwalInstance } from "sweetalert2-react";
 import swal from "sweetalert2";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from "jquery";
 
 import withReactContent from "sweetalert2-react-content";
 function SetupRewardPoint() {

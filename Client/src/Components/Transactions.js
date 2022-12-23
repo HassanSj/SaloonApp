@@ -3,6 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
+
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from "jquery";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
 import "../assets/css/textanimate.css";
 import { Button } from "reactstrap";
@@ -139,7 +149,9 @@ function Transactions() {
     wallet();
     withdraw();
   }, []);
-
+  $(function () {
+    $("#example").DataTable();
+  });
   return (
     <div>
       <div
@@ -463,7 +475,7 @@ function Transactions() {
               >
                 <div className="card-header pb-0" id="table1">
                   <div className="d-flex align-items-center">
-                    <table className="table">
+                    <table id="example" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -533,7 +545,7 @@ function Transactions() {
                 </div>
                 <div className="card-header pb-0" id="table2">
                   <div className="d-flex align-items-center">
-                    <table className="table">
+                    <table id="example" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -601,7 +613,7 @@ function Transactions() {
                 </div>
                 <div className="card-header pb-0" id="table3">
                   <div className="d-flex align-items-center">
-                    <table className="table">
+                    <table id="example" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -676,7 +688,7 @@ function Transactions() {
                 </div>
                 <div className="card-header pb-0" id="table4">
                   <div className="d-flex align-items-center">
-                    <table className="table">
+                    <table id="example" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>

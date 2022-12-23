@@ -4,6 +4,11 @@ import { NavLink } from "react-router-dom";
 import "../assets/css/nucleo-icons.css";
 import "../assets/css/nucleo-svg.css";
 import "../assets/css/textanimate.css";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from "jquery";
 import "../assets/css/argon-dashboard.css?v=2.0.4";
 function Transfers() {
   const images = importAll(
@@ -46,7 +51,9 @@ function Transfers() {
   function redirect() {
     Navigate("/");
   }
-
+  $(function () {
+    $("#example").DataTable();
+  });
   return (
     <div>
       <div
@@ -322,14 +329,14 @@ function Transfers() {
               <div
                 className="card"
                 style={{
-                  width: "109%",
+                  width: "130%",
                   marginLeft: "132px",
                   fontSize: "larger",
                 }}
               >
                 <div className="card-header pb-0">
                   <div className="d-flex align-items-center">
-                    <table class="table">
+                    <table id="example" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -358,7 +365,7 @@ function Transfers() {
 
                                 <th>{element.created_at}</th>
 
-                                <td class="align-middle  text-sm">
+                                <td className="align-middle  text-sm">
                                   {/* <img src={element.image}/> */}
                                   <button
                                     style={{
@@ -368,7 +375,7 @@ function Transfers() {
                                       marginLeft: "11px",
                                     }}
                                   >
-                                    <span class="badge badge-sm bg-gradient-info">
+                                    <span className="badge badge-sm bg-gradient-info">
                                       View
                                     </span>
                                   </button>
