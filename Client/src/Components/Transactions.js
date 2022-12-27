@@ -29,9 +29,28 @@ function Transactions() {
   const [getwithdraw, setWithdraw] = useState([]);
 
   const Navigate = useNavigate();
-
+  const datatable = () => {
+    $(function () {
+      $("#example").DataTable();
+    });
+  };
+  const datatable1 = () => {
+    $(function () {
+      $("#example1").DataTable();
+    });
+  };
+  const datatable2 = () => {
+    $(function () {
+      $("#example2").DataTable();
+    });
+  };
+  const datatable3 = () => {
+    $(function () {
+      $("#example3").DataTable();
+    });
+  };
   const booking = async () => {
-    const res = await fetch("http://localhost:1337/transactions/booking", {
+    const res = await fetch("http://192.168.18.26:1337/transactions/booking", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -44,18 +63,22 @@ function Transactions() {
     if (res.status === 422 || !data) {
       console.log("error ");
     } else {
+      $("#example").DataTable().destroy();
       setBooking(data);
       console.log("get data");
     }
   };
 
   const membership = async () => {
-    const res = await fetch("http://localhost:1337/transactions/membership", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "http://192.168.18.26:1337/transactions/membership",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data1 = await res.json();
     console.log(data1);
@@ -63,13 +86,14 @@ function Transactions() {
     if (res.status === 422 || !data1) {
       console.log("error ");
     } else {
+      $("#example1").DataTable().destroy();
       setMembership(data1);
       console.log("get data");
     }
   };
 
   const wallet = async () => {
-    const res = await fetch("http://localhost:1337/transactions/wallet", {
+    const res = await fetch("http://192.168.18.26:1337/transactions/wallet", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -82,13 +106,14 @@ function Transactions() {
     if (res.status === 422 || !data) {
       console.log("error ");
     } else {
+      $("#example2").DataTable().destroy();
       setWallet(data);
       console.log("get data");
     }
   };
 
   const withdraw = async () => {
-    const res = await fetch("http://localhost:1337/transactions/withdraw", {
+    const res = await fetch("http://192.168.18.26:1337/transactions/withdraw", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -101,14 +126,12 @@ function Transactions() {
     if (res.status === 422 || !data) {
       console.log("error ");
     } else {
+      $("#example3").DataTable().destroy();
       setWithdraw(data);
       console.log("get data");
     }
   };
 
-  function redirect() {
-    Navigate("/");
-  }
   const styles = {
     btn_group_button: {
       color: "white",
@@ -129,7 +152,16 @@ function Transactions() {
       backgroundColor: "#3e8e41",
     },
   };
+
   $(function () {
+    $("#table2").css("display", "none");
+    $("#table3").css("display", "none");
+    $("#table4").css("display", "none");
+    $("#bok1").on("click", function () {
+      if (!$(this).hasClass("background-color:red;"))
+        $(this).addClass("background-color:red;");
+    });
+
     $("body").on("click", ".btn", function () {
       $("#content div").hide();
 
@@ -143,9 +175,10 @@ function Transactions() {
     wallet();
     withdraw();
   }, []);
-  $(function () {
-    $("#example").DataTable();
-  });
+  datatable();
+  datatable1();
+  datatable2();
+  datatable3();
   return (
     <div>
       <div
@@ -424,6 +457,7 @@ function Transactions() {
                   type="button"
                   className="btn"
                   data-target="table1"
+                  id="bok1"
                 >
                   Booking Transactions
                 </Button>
@@ -539,7 +573,7 @@ function Transactions() {
                 </div>
                 <div className="card-header pb-0" id="table2">
                   <div className="d-flex align-items-center">
-                    <table id="example" className="table">
+                    <table id="example1" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -570,7 +604,7 @@ function Transactions() {
                                 <th>{element.created_at}</th>
 
                                 <td className="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",
@@ -607,7 +641,7 @@ function Transactions() {
                 </div>
                 <div className="card-header pb-0" id="table3">
                   <div className="d-flex align-items-center">
-                    <table id="example" className="table">
+                    <table id="example2" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -645,7 +679,7 @@ function Transactions() {
                                 <th>{element.status}</th>
 
                                 <td className="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",
@@ -682,7 +716,7 @@ function Transactions() {
                 </div>
                 <div className="card-header pb-0" id="table4">
                   <div className="d-flex align-items-center">
-                    <table id="example" className="table">
+                    <table id="example3" className="table">
                       <thead>
                         <tr className="table-dark">
                           <th>Id</th>
@@ -713,7 +747,7 @@ function Transactions() {
                                 <th>{element.status}</th>
 
                                 <td className="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",
@@ -781,5 +815,4 @@ function Transactions() {
     </div>
   );
 }
-
 export default Transactions;

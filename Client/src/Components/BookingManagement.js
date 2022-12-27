@@ -372,7 +372,7 @@ function BookingManagement() {
                                 <td>{element.from_time}</td>
                                 <td>{element.to_time}</td>
                                 <td class="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",

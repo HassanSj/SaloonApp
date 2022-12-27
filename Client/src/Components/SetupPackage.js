@@ -459,7 +459,7 @@ function SetupPackage() {
                                 <td>{element.created_at}</td>
                                 <td>{element.updated_at}</td>
                                 <td class="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",

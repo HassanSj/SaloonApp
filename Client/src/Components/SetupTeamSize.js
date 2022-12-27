@@ -451,7 +451,7 @@ function SetupTeamSize() {
                                   {" "}
                                   <div className="avatar avatar-xl position-relative">
                                     <img
-                                      src={element.image}
+                                      src={require("../images/image-1671615671204.png")}
                                       alt="profile_image"
                                       className="w-100 border-radius-lg shadow-sm"
                                     />
@@ -461,7 +461,7 @@ function SetupTeamSize() {
                                 <td>{element.name}</td>
 
                                 <td class="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",

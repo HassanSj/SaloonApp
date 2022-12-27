@@ -446,10 +446,7 @@ function BusinessType() {
                                   {" "}
                                   <div className="avatar avatar-xl position-relative">
                                     <img
-                                      src={
-                                        "http://localhost:3000/ProgramminStudio/SaloonApp/Client/src/images/" +
-                                        element.image
-                                      }
+                                      src={require("../images/image-1671615671204.png")}
                                       alt="profile_image"
                                       className="w-100 border-radius-lg shadow-sm"
                                     />

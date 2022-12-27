@@ -358,7 +358,7 @@ function SaloonsManagement() {
                                   {" "}
                                   <div className="avatar avatar-xl position-relative">
                                     <img
-                                      src={element.profile_image}
+                                      src={require("../images/image-1671615671204.png")}
                                       alt="profile_image"
                                       className="w-100 border-radius-lg shadow-sm"
                                     />
@@ -373,7 +373,7 @@ function SaloonsManagement() {
                                 <td>{element.feature}</td>
                                 <td>{element.status}</td>
                                 <td class="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",

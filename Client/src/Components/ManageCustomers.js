@@ -352,7 +352,16 @@ function ManageCustomers() {
                             <>
                               <tr>
                                 <th>{element.id}</th>
-                                <th>{element.profile_image}</th>
+                                <td>
+                                  {" "}
+                                  <div className="avatar avatar-xl position-relative">
+                                    <img
+                                      src={require("../images/image-1671615671204.png")}
+                                      alt="profile_image"
+                                      className="w-100 border-radius-lg shadow-sm"
+                                    />
+                                  </div>
+                                </td>
                                 <td>
                                   {element.first_name + element.last_name}
                                 </td>
@@ -360,7 +369,7 @@ function ManageCustomers() {
                                 <td>{element.email}</td>
                                 <td>{element.status}</td>
                                 <td class="align-middle  text-sm">
-                                  {/* <img src={element.image}/> */}
+                                  {/* <imgsrc={require("../images/image-1671615671204.png")}/> */}
                                   <button
                                     style={{
                                       padding: "0",
