@@ -295,12 +295,10 @@ function ClinicsManagement() {
                   </div>
                 </div>
               </nav>
-              {/* End Navbar */}
             </div>
           </div>
         </div>
 
-        {/* End Navbar */}
         <div className="card shadow-lg mx-4 card-profile-bottom">
           <div className="card-body p-3">
             <div className="row gx-4">

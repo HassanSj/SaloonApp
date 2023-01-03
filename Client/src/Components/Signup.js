@@ -78,7 +78,7 @@ function Signup() {
           </div>
         </div>
       </nav>
-      {/* End Navbar */}
+
       <main className="main-content  mt-0">
         <div
           className="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"

@@ -85,7 +85,6 @@ function Login() {
                 </div>
               </div>
             </nav>
-            {/* End Navbar */}
           </div>
         </div>
       </div>

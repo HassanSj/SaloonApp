@@ -251,7 +251,7 @@ function Home() {
             </div>
           </div>
         </nav>
-        {/* End Navbar */}
+
         <div className="container-fluid py-4">
           <div className="row">
             <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">

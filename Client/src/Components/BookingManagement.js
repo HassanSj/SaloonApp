@@ -311,7 +311,6 @@ function BookingManagement() {
                   </div>
                 </div>
               </nav>
-              {/* End Navbar */}
             </div>
           </div>
         </div>
