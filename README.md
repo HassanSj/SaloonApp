@@ -1,2 +1,0 @@
-# SaloonApp
- Programin Studio Project
