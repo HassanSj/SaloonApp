@@ -251,7 +251,6 @@ function Transfers() {
         </div>
       </aside>
       <main className="main-content position-relative border-radius-lg ">
-        {/* Navbar */}
         <div className="container position-sticky z-index-sticky top-0">
           <div className="row">
             <div className="col-12">

@@ -207,7 +207,6 @@ function Home() {
         </div>
       </aside>
       <main className="main-content position-relative border-radius-lg ">
-        {/* Navbar */}
         <nav
           className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl "
           id="navbarBlur"
